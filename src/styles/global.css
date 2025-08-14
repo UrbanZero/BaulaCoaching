@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+/* Custom thin scrollbar for horizontal timeline */
+.timeline-scroll::-webkit-scrollbar {
+  height: 6px; /* horizontal scrollbar height */
+}
+.timeline-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.timeline-scroll::-webkit-scrollbar-thumb {
+  background: #4b5563; /* gray-600 */
+  border-radius: 9999px;
+}
+.timeline-scroll::-webkit-scrollbar-thumb:hover {
+  background: #6b7280; /* gray-500 */
+}
+/* Firefox */
+.timeline-scroll {
+  scrollbar-color: #4b5563 transparent;
+  scroll-behavior: smooth;
+}

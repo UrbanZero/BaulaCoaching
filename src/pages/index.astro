@@ -1,0 +1,358 @@
+---
+import PayButton from "../components/PayButton.astro";
+import CareerTimeline from "../components/CareerTimeline.astro";
+import "../styles/global.css";
+
+// Replace with your Stripe Payment Link
+const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Baula Coaching | Climb Faster</title>
+  </head>
+  <body class="bg-gray-900 text-white font-sans">
+    <!-- Fullscreen Hero with Background Image -->
+    <section
+      class="relative h-screen flex items-center justify-center text-center bg-black"
+    >
+      <!-- Background Image -->
+      <div
+        class="absolute inset-0 bg-cover bg-center"
+        style="background-image: url('/images/playing.jpg');"
+      >
+      </div>
+
+      <!-- Overlay for better text contrast -->
+      <div class="absolute inset-0 bg-black/30"></div>
+
+      <!-- Content -->
+      <div class="relative z-10 px-6 max-w-3xl ml-150 mb-25">
+        <h1
+          class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6"
+        >
+          <span class="text-amber-400">Level Up</span> Your League of Legends Game
+        </h1>
+        <p class="text-lg text-gray-200 mb-8">
+          Professional 1-on-1 coaching to improve your mechanics, game sense,
+          and climb ranks faster than ever.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <PayButton href={PAYMENT_LINK} />
+          <a
+            href="#about"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-medium border border-gray-300 hover:bg-white/10 transition"
+          >
+            Learn More
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT / CREDIBILITY -->
+    <section id="about" class="max-w-6xl mx-auto px-6 mt-10">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <!-- Left: Text -->
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-10 mt-10">
+            From Challenger to Your Personal Coach
+          </h2>
+          <p class="text-gray-300 mb-6 text-xl">
+            I'm Alejandro, also known as <strong>Baula</strong>, a seasoned
+            Challenger player and professional League player <strong
+              >since season 2</strong
+            >. I've conquered through all the changes and challenges the game
+            has presented, mastering mechanics, strategy, and mindset along the
+            way.
+            <br /><br />
+            If you're looking to elevate your skills and boost your confidence, I
+            provide personalized coaching and feedback. Let's make this season your
+            best one yet! I look forward to working together to achieve your goals
+            helping you <strong>break through your limits</strong>.
+          </p>
+          <ul class="grid sm:grid-rows-3 gap-4 mt-20 text-3xl">
+            <li class="bg-gray-800/60 rounded-xl p-4">
+              <strong>Peak in NAS:</strong>
+              <strong class="text-amber-400">5</strong>
+            </li>
+            <li class="bg-gray-800/60 rounded-xl p-4">
+              <strong>Competitive years:</strong>
+              <strong class="text-amber-400">+13</strong>
+            </li>
+            <li class="bg-gray-800/60 rounded-xl p-4">
+              <strong>Students coached:</strong>
+              <strong class="text-amber-400">+500</strong>
+            </li>
+          </ul>
+        </div>
+        <!-- Right: Image -->
+        <div
+          class="relative rounded-2xl overflow-hidden border border-gray-800 shadow-lg"
+        >
+          <img
+            src="/images/sit.jpg"
+            alt="League of Legends Coaching"
+            class="w-full h-full object-cover"
+          />
+          <!-- Optional gradient overlay for style -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
+          >
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Career -->
+    <CareerTimeline />
+    <!-- PROCESS -->
+    <section id="process" class="bg-gray-950/60 border-y border-gray-800 mt-15">
+      <div class="max-w-6xl mx-auto px-6 py-20">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-10 text-center">
+          How It Works?
+        </h2>
+        <div class="grid md:grid-cols-4 gap-6">
+          {
+            [
+              {
+                title: "Assessment",
+                desc: "OP.GG review, goals, champ pool.",
+              },
+              {
+                title: "Live Session",
+                desc: "VOD/live queue with targeted feedback.",
+              },
+              {
+                title: "Action Plan",
+                desc: "Drills & focus points for the week.",
+              },
+              {
+                title: "Follow-Up",
+                desc: "Discord check-ins and adjustments.",
+              },
+            ].map((step) => (
+              <div class="bg-gray-900/60 rounded-2xl p-6 border border-gray-800">
+                <div class="text-amber-400 font-bold mb-2 text-xl">
+                  {step.title}
+                </div>
+                <p class="text-gray-300">{step.desc}</p>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section id="testimonials" class="max-w-6xl mx-auto px-6 py-20">
+      <div class="grid lg:grid-cols-2 gap-10 items-start">
+        <div
+          class="relative rounded-2xl overflow-hidden border border-gray-800 shadow-lg"
+        >
+          <img
+            src="/images/prove.jpg"
+            alt="League of Legends Coaching"
+            class="w-full h-full object-cover"
+          />
+          <!-- Optional gradient overlay for style -->
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
+          >
+          </div>
+        </div>
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-7 text-center">
+            Student Results
+          </h2>
+          <div class="grid gap-3">
+            <div class="bg-gray-900/60 rounded-2xl p-6 border border-gray-800">
+              <p class="text-gray-300 italic text-xl">
+                “Gold 1 to Diamond 3 in 5 weeks. Macro finally clicked.”
+              </p>
+              <div class="mt-4 text-gray-400">— Jhon, Top</div>
+            </div>
+            <div class="bg-gray-900/60 rounded-2xl p-6 border border-gray-800">
+              <p class="text-gray-300 italic text-xl">
+                “His pathing tricks alone won me 200 LP.”
+              </p>
+              <div class="mt-4 text-gray-400">— Lucía, Jungle</div>
+            </div>
+            <div class="bg-gray-900/60 rounded-2xl p-6 border border-gray-800">
+              <p class="text-gray-300 italic text-xl">
+                “Clear instructions and weekly focus. I just stopped
+                coin‑flipping.”
+              </p>
+              <div class="mt-4 text-gray-400">— Kenji, Mid</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING / PACKAGES -->
+    <section id="pricing" class="bg-gray-950/60 border-y border-gray-800">
+      <div class="max-w-6xl mx-auto px-6 py-10">
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-10 text-center">
+          Packages
+        </h2>
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="rounded-2xl p-6 border border-gray-800 bg-gray-900/60">
+            <h3 class="text-xl font-semibold mb-2">Starter</h3>
+            <p class="text-gray-300 mb-4">1 × 60‑min session + action plan</p>
+            <div class="text-3xl font-extrabold mb-6">€29</div>
+            <PayButton href={PAYMENT_LINK} />
+          </div>
+          <div
+            class="rounded-2xl p-6 border border-amber-600 bg-gray-900/80 shadow-lg"
+          >
+            <h3 class="text-xl font-semibold mb-2">Climb Pack</h3>
+            <p class="text-gray-300 mb-4">
+              3 × sessions + notes + 2 weeks follow‑up
+            </p>
+            <div class="text-3xl font-extrabold mb-6">€69</div>
+            <PayButton href={PAYMENT_LINK} />
+          </div>
+          <div class="rounded-2xl p-6 border border-gray-800 bg-gray-900/60">
+            <h3 class="text-xl font-semibold mb-2">Pro Track</h3>
+            <p class="text-gray-300 mb-4">
+              8 × sessions + scrim prep + priority support
+            </p>
+            <div class="text-3xl font-extrabold mb-6">€99</div>
+            <PayButton href={PAYMENT_LINK} />
+          </div>
+        </div>
+        <p class="text-xs text-gray-500 mt-4">
+          Need a team or duo package? <a href="#contact" class="underline"
+            >Contact me</a
+          >.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT / DISCORD -->
+    <section id="contact" class="max-w-6xl mx-auto px-6 py-20">
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="flex flex-col items-center text-center">
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+            Join the Discord
+          </h2>
+          <p class="text-gray-300 mb-6">
+            Ask questions, share VODs, and get community feedback.
+          </p>
+          <a
+            href="https://discord.gg/yourinvite"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-black bg-amber-500 hover:bg-amber-600 shadow-lg"
+          >
+            Enter Server
+          </a>
+        </div>
+        <div>
+          <h2 class="text-3xl md:text-4xl font-extrabold mb-4 text-center">
+            Email me
+          </h2>
+          <form
+            class="bg-gray-900/60 rounded-2xl p-6 border border-gray-800 space-y-4"
+          >
+            <div>
+              <label class="block text-sm mb-1">Email</label>
+              <input
+                class="w-full bg-gray-800 rounded-lg px-3 py-2 border border-gray-700"
+                placeholder="you@example.com"
+              />
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Your Role & Rank</label>
+              <input
+                class="w-full bg-gray-800 rounded-lg px-3 py-2 border border-gray-700"
+                placeholder="Jungle — Platinum 2"
+              />
+            </div>
+            <div>
+              <label class="block text-sm mb-1">Message</label>
+              <textarea
+                class="w-full bg-gray-800 rounded-lg px-3 py-2 border border-gray-700"
+                rows="4"
+                placeholder="Tell me your goals…"></textarea>
+            </div>
+            <button
+              type="button"
+              class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-black bg-amber-500 hover:bg-amber-600"
+              >Send</button
+            >
+          </form>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <!-- FAQ -->
+  <section
+    id="faq"
+    class="bg-gray-950/60 border-y border-gray-800 max-w-6xl mx-auto px-6 py-6 w-full"
+  >
+    <div class="grid lg:grid-cols-2 gap-10 items-start">
+      <div>
+        <h2 class="text-3xl md:text-4xl font-extrabold mb-10 text-center">
+          FAQ
+        </h2>
+        <div class="space-y-6">
+          <details class="bg-gray-900/60 rounded-xl p-5 border border-gray-800">
+            <summary class="font-semibold cursor-pointer"
+              >How are sessions delivered?</summary
+            >
+            <p class="text-gray-300 mt-3">
+              Discord + screenshare, or spectate. Recordings on request.
+            </p>
+          </details>
+          <details class="bg-gray-900/60 rounded-xl p-5 border border-gray-800">
+            <summary class="font-semibold cursor-pointer"
+              >Can I get a refund?</summary
+            >
+            <p class="text-gray-300 mt-3">
+              If we need to reschedule and you can’t make it, I’ll refund or
+              rebook, your choice.
+            </p>
+          </details>
+          <details class="bg-gray-900/60 rounded-xl p-5 border border-gray-800">
+            <summary class="font-semibold cursor-pointer"
+              >What do I need?</summary
+            >
+            <p class="text-gray-300 mt-3">Discord, internet and League.</p>
+          </details>
+        </div>
+        <!-- Right: Image -->
+      </div>
+      <div
+        class="relative rounded-2xl overflow-hidden border border-gray-800 shadow-lg"
+      >
+        <img
+          src="/images/time.jpg"
+          alt="League of Legends Coaching"
+          class="w-full h-full object-cover"
+        />
+        <!-- Optional gradient overlay for style -->
+        <div
+          class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent"
+        >
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="border-t border-gray-800 py-10 text-sm text-gray-400">
+    <div
+      class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4"
+    >
+      <div>
+        © {new Date().getFullYear()} BaulaCoach. All rights reserved.
+      </div>
+      <div class="flex gap-4">
+        <a href="/politicas/privacidad" class="hover:text-white">Privacy</a>
+        <a href="/politicas/terminos" class="hover:text-white">Terms</a>
+        <a href="https://twitter.com/yourhandle" class="hover:text-white"
+          >Twitter</a
+        >
+      </div>
+    </div>
+  </footer>
+</html>
