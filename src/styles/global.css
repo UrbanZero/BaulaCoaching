@@ -1,21 +1,222 @@
 @import "tailwindcss";
 
+html {
+  scroll-behavior: smooth;
+}
+
 /* Custom thin scrollbar for horizontal timeline */
 .timeline-scroll::-webkit-scrollbar {
-  height: 6px; /* horizontal scrollbar height */
+  height: 6px;
 }
 .timeline-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
 .timeline-scroll::-webkit-scrollbar-thumb {
-  background: #4b5563; /* gray-600 */
+  background: #4b5563;
   border-radius: 9999px;
 }
 .timeline-scroll::-webkit-scrollbar-thumb:hover {
-  background: #6b7280; /* gray-500 */
+  background: #6b7280;
 }
 /* Firefox */
 .timeline-scroll {
   scrollbar-color: #4b5563 transparent;
   scroll-behavior: smooth;
+}
+
+/* NavBar */
+:root {
+  --nav-h: 64px;
+  --bg: #111827;
+  --bg-solid: #1f2937;
+  --fg: #e8edf2;
+  --muted: #9aa4b2;
+  --accent: #2563eb; /* blue */
+  --accent-2: #f59e0b; /* amber */
+  --border: rgba(255, 255, 255, 0.08);
+}
+
+.nav-wrap {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(10px);
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 16px;
+  height: var(--nav-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--fg);
+}
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+}
+.brand-logo {
+  width: auto;
+  height: 30px;
+  background-image: url("/images/baula-logo.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.brand span {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+.cinzel {
+  font-family: "Cinzel", serif;
+}
+h1,
+h2,
+h3 {
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+}
+
+p,
+li,
+span {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+}
+.links {
+  display: none;
+}
+.links a {
+  padding: 8px 10px;
+  border-radius: 8px;
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+.links a:hover {
+  color: var(--fg);
+  background: rgba(255, 255, 255, 0.05);
+}
+.links a[aria-current="page"] {
+  color: var(--fg);
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.cta {
+  display: none;
+}
+.pay {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  box-shadow: none;
+  background-image: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background-color: linear-gradient(135deg, var(--accent), var(--accent-2));
+  background-blend-mode: overlay;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+.pay:hover {
+  color: black;
+  background-color: var(--accent-2);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.35);
+}
+/* Mobile menu */
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.03);
+}
+.burger span {
+  width: 18px;
+  height: 2px;
+  background: var(--fg);
+  border-radius: 2px;
+}
+
+.mobile-panel {
+  display: none;
+  border-bottom: 1px solid var(--border);
+  position: fixed;
+  top: calc(var(--nav-h) + max(env(safe-area-inset-top), 0px));
+  right: 0;
+  width: 70%; /* occupy only a portion of the screen */
+  max-width: 320px; /* optional limit */
+  height: 100%;
+  box-shadow: -4px 0 12px rgba(0, 0, 0, 0.4);
+}
+.mobile-inner {
+  background: var(--bg-solid);
+  padding: 10px 16px 16px;
+  display: grid;
+  gap: 6px;
+}
+.mobile-inner a {
+  color: var(--fg);
+  text-decoration: none;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+.mobile-inner a:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+.mobile-inner a[aria-current="page"] {
+  background: rgba(59, 130, 246, 0.15);
+}
+
+.mobile-cta {
+  margin-top: 6px;
+}
+.mobile-cta a {
+  display: inline-block;
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+}
+.mobile-cta a:hover {
+  color: black;
+  background-color: var(--accent-2);
+  box-shadow: 0 0 24px rgba(59, 130, 246, 0.35);
+}
+
+/* >= 860px */
+@media (min-width: 860px) {
+  .links {
+    display: flex;
+    gap: 6px;
+  }
+  .cta {
+    display: block;
+  }
+  .burger {
+    display: none;
+  }
+  .mobile-panel {
+    display: none !important;
+  }
+}
+@media (max-width: 860px) {
+  .hero-content {
+    margin-left: 50px !important;
+  }
 }

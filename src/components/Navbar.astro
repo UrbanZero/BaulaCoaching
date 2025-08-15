@@ -1,0 +1,84 @@
+---
+import PayButton from "./PayButton.astro";
+
+// src/components/Navbar.astro
+// Minimal, fast, responsive navbar for a League coaching site
+// Drop this file into src/components and import it in your layout
+
+const links = [
+  { href: "#about", label: "About" },
+  { href: "#testimonials", label: "Testimonials" },
+  { href: "#pricing", label: "Packs" },
+  { href: "#contact", label: "Contact" },
+  { href: "#faq", label: "FAQ" },
+];
+const pathname = Astro.url.pathname;
+---
+
+<nav class="nav-wrap" role="navigation" aria-label="Primary">
+  <div class="container">
+    <a class="brand" href="#top" aria-label="League Coaching Home">
+      <img
+        src="/images/baula-logo.png"
+        alt="Baula Coaching Logo"
+        class="brand-logo"
+      />
+      <span>Baula Coaching</span>
+    </a>
+
+    <div class="links" id="desktop-links">
+      {
+        links.map(({ href, label }) => (
+          <a href={href} aria-current={pathname === href ? "page" : undefined}>
+            {label}
+          </a>
+        ))
+      }
+    </div>
+    <PayButton />
+
+    <button
+      class="burger"
+      id="nav-burger"
+      aria-label="Open menu"
+      aria-expanded="false"
+      aria-controls="mobile-panel"
+    >
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div id="mobile-panel" class="mobile-panel" hidden>
+    <div class="mobile-inner">
+      {
+        links.map(({ href, label }) => (
+          <a href={href} aria-current={pathname === href ? "page" : undefined}>
+            {label}
+          </a>
+        ))
+      }
+      <div class="mobile-cta">
+        <a class="pay" href="#pricing">Book Session</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  // Small, framework-free mobile toggle
+  const btn = document.getElementById("nav-burger");
+  const panel = document.getElementById("mobile-panel");
+  if (btn && panel) {
+    btn.addEventListener("click", () => {
+      const open = btn.getAttribute("aria-expanded") === "true";
+      btn.setAttribute("aria-expanded", String(!open));
+      if (open) {
+        panel.hidden = true;
+        panel.style.display = "none";
+      } else {
+        panel.hidden = false;
+        panel.style.display = "block";
+      }
+    });
+  }
+</script>

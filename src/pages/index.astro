@@ -1,20 +1,37 @@
 ---
+// domain: baulacoach.com 15€/y
 import PayButton from "../components/PayButton.astro";
 import CareerTimeline from "../components/CareerTimeline.astro";
+import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import Footer from "../components/Footer.astro";
 
-// Replace with your Stripe Payment Link
+// Replace with Stripe Payment
 const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
 ---
 
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
+    <meta
+      charset="UTF-8"
+      name="viewport"
+      content="width=device-width, initial-scale=1"
+    />
     <title>Baula Coaching | Climb Faster</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Lato:wght@400&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="bg-gray-900 text-white font-sans">
+    <Navbar />
     <!-- Fullscreen Hero with Background Image -->
     <section
+      id="top"
       class="relative h-screen flex items-center justify-center text-center bg-black"
     >
       <!-- Background Image -->
@@ -28,30 +45,31 @@ const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
       <div class="absolute inset-0 bg-black/30"></div>
 
       <!-- Content -->
-      <div class="relative z-10 px-6 max-w-3xl ml-150 mb-25">
+      <div class="relative z-10 px-6 max-w-3xl ml-150 mb-25 hero-content">
         <h1
           class="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6"
         >
-          <span class="text-amber-400">Level Up</span> Your League of Legends Game
+          <span class="text-amber-400 cinzel">Level Up</span> Your League of Legends
+          Game
         </h1>
-        <p class="text-lg text-gray-200 mb-8">
+        <p class="text-lg text-gray-300 mb-8">
           Professional 1-on-1 coaching to improve your mechanics, game sense,
           and climb ranks faster than ever.
         </p>
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <PayButton href={PAYMENT_LINK} />
+          <PayButton />
           <a
             href="#about"
             class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-medium border border-gray-300 hover:bg-white/10 transition"
           >
-            Learn More
+            About me
           </a>
         </div>
       </div>
     </section>
 
     <!-- ABOUT / CREDIBILITY -->
-    <section id="about" class="max-w-6xl mx-auto px-6 mt-10">
+    <section id="about" class="max-w-6xl mx-auto px-6 pt-10">
       <div class="grid lg:grid-cols-2 gap-10 items-start">
         <!-- Left: Text -->
         <div>
@@ -190,8 +208,8 @@ const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
     </section>
 
     <!-- PRICING / PACKAGES -->
-    <section id="pricing" class="bg-gray-950/60 border-y border-gray-800">
-      <div class="max-w-6xl mx-auto px-6 py-10">
+    <section id="pricing" class="bg-gray-950/60 border-y border-gray-800 py-15">
+      <div class="max-w-6xl mx-auto px-6">
         <h2 class="text-3xl md:text-4xl font-extrabold mb-10 text-center">
           Packages
         </h2>
@@ -241,7 +259,7 @@ const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
           </p>
           <a
             href="https://discord.gg/yourinvite"
-            class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-black bg-amber-500 hover:bg-amber-600 shadow-lg"
+            class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold shadow-lg text-black bg-amber-500 hover:bg-amber-600 hover:text-white"
           >
             Enter Server
           </a>
@@ -276,7 +294,7 @@ const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
             </div>
             <button
               type="button"
-              class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-black bg-amber-500 hover:bg-amber-600"
+              class="inline-flex items-center justify-center rounded-xl px-6 py-3 font-semibold text-black bg-amber-500 hover:bg-amber-600 hover:text-white"
               >Send</button
             >
           </form>
@@ -339,20 +357,5 @@ const PAYMENT_LINK = "https://buy.stripe.com/your_link_here";
     </div>
   </section>
   <!-- FOOTER -->
-  <footer class="border-t border-gray-800 py-10 text-sm text-gray-400">
-    <div
-      class="max-w-6xl mx-auto px-6 flex flex-col sm:flex-row items-center justify-between gap-4"
-    >
-      <div>
-        © {new Date().getFullYear()} BaulaCoach. All rights reserved.
-      </div>
-      <div class="flex gap-4">
-        <a href="/politicas/privacidad" class="hover:text-white">Privacy</a>
-        <a href="/politicas/terminos" class="hover:text-white">Terms</a>
-        <a href="https://twitter.com/yourhandle" class="hover:text-white"
-          >Twitter</a
-        >
-      </div>
-    </div>
-  </footer>
+  <Footer />
 </html>
